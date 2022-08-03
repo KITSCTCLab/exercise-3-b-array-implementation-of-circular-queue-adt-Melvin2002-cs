@@ -4,8 +4,24 @@ class MyCircularQueue:
         self.size = size
         self.rear = -1
         self.front = -1
+     
+    def is_empty(self):
+        if (self.front==-1 and self.rear==-1):
+            return 1
+        elif (self.front+1==self.rear) and self.rear==self.size-1:
+            self.front=-1
+            self.rear=-1
+            return 1
+        else :
+            return 0
         
         
+    def is_full(self):
+        if (self.front==0 and self.rear==self.size-1) or self.rear==self.front-1:
+            return 1
+        else:
+            return 0
+     
     def get_front(self):
         if self.is_empty()==1:
             return int(-1)
@@ -28,11 +44,7 @@ class MyCircularQueue:
         else :
             return 0
 
-    def is_full(self):
-        if (self.front==0 and self.rear==self.size-1) or self.rear==self.front-1:
-            return 1
-        else:
-            return 0
+    
             
             
     def enqueue(self, value: int) -> bool:
