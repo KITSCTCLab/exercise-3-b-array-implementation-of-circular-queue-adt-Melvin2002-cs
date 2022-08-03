@@ -41,19 +41,19 @@ class MyCircularQueue:
             if self.front==self.rear==-1:
                 self.front=0
                 self.rear=0
-                self.queue[self.rear]=value
+                self.queue[self.rear]=int 
             
             if self.rear<self.size-1 and self.front<self.rear:
                 self.rear+=1
-                self.queue[self.rear]=value
+                self.queue[self.rear]=int
             
             if self.rear==self.size-1 and  self.queue[self.front-1]==[0]:
                 self.rear=0
-                self.queue[self.rear]=value
+                self.queue[self.rear]=int
             
             if self.rear<self.front and self.queue[self.front-1]==[0]:
                 self.rear+=1
-                self.queue[self.rear]=value
+                self.queue[self.rear]=int
                 
         else:
             return 0
