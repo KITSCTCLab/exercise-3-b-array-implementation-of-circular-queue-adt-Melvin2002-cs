@@ -3,44 +3,9 @@ class MyCircularQueue:
         self.queue = [0]*size
         self.size = size
         self.rear = -1
-        self.front = -1
-
-    def enqueue(self, value: int) -> bool:
-        if is_full()!=1:
-            
-            if self.front==self.rear==-1:
-                self.front=0
-                self.rear=0
-                self.queue[self.rear]=value
-            
-            if self.rear<self.size-1 and self.front<self.rear:
-                self.rear+=1
-                self.queue[self.rear]=value
-            
-            if self.rear==self.size-1 and  self.queue[self.front-1]==[0]:
-                self.rear=0
-                self.queue[self.rear]=value
-            
-            if self.rear<self.front and self.queue[self.front-1]==[0]:
-                self.rear+=1
-                self.queue[self.rear]=value
-                
-        else:
-            return 0
-                
-
-    def dequeue(self) -> bool:
-        if self.is_empty()==0:
-            return 0
-        else:
-            if self.front<self.rear:
-                self.queue[self.front]=0
-                self.front=-1
-            
-            if self.front>self.rear:
-                self.queue[self.front]=0
-                self.front=-1
-
+        self.front = -
+        
+        
     def get_front(self):
         if self.is_empty()==1:
             return int(-1)
@@ -68,6 +33,42 @@ class MyCircularQueue:
             return 1
         else:
             return 0
+            
+            
+    def enqueue(self, value: int) -> bool:
+        if is_full()==0:
+            
+            if self.front==self.rear==-1:
+                self.front=0
+                self.rear=0
+                self.queue[self.rear]=value
+            
+            if self.rear<self.size-1 and self.front<self.rear:
+                self.rear+=1
+                self.queue[self.rear]=value
+            
+            if self.rear==self.size-1 and  self.queue[self.front-1]==[0]:
+                self.rear=0
+                self.queue[self.rear]=value
+            
+            if self.rear<self.front and self.queue[self.front-1]==[0]:
+                self.rear+=1
+                self.queue[self.rear]=value
+                
+        else:
+            return 0
+            
+    def dequeue(self) -> bool:
+        if self.is_empty()==0:
+            return 0
+        else:
+            if self.front<self.rear:
+                self.queue[self.front]=0
+                self.front=-1
+            
+            if self.front>self.rear:
+                self.queue[self.front]=0
+                self.front=-1
 
 
 # Do not change the following code
