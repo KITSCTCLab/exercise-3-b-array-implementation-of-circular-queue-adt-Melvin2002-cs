@@ -70,8 +70,3 @@ for i in range(len(operations)):
         result.append(obj.is_empty())
 
 print(result)
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Pri
