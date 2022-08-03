@@ -1,89 +1,46 @@
 class MyCircularQueue:
     def __init__(self, size: int):
-        self.queue = [0]*size
+        self.queue = [0] * size
         self.size = size
-        self.rear = -1
-        self.front = -1
-     
-    def is_empty(self):
-        if (self.front==-1 and self.rear==-1):
-            return 1
-        elif (self.front+1==self.rear) and self.rear==self.size-1:
-            self.front=-1
-            self.rear=-1
-            return 1
-        else :
-            return 0
-        
-        
-    def is_full(self):
-        if (self.front==0 and self.rear==self.size-1) or self.rear==self.front-1:
-            return 1
+        self.front, self.rear = -1, -1
+
+    def enqueue(self, value: int) -> bool:
+        if self.is_full():
+            return False
+        if self.front == -1:
+            self.front, self.rear = 0, 0
         else:
-            return 0
-     
-    def get_front(self):
-        if self.is_empty()==1:
-            return int(-1)
+            self.rear = (self.rear + 1) % self.size
+        self.queue[self.rear] = value
+        return True
+
+    def dequeue(self) -> bool:
+        if self.is_empty(): 
+            return False
+        if self.front == self.rear:
+            self.front, self.rear = -1, -1
         else:
-         return self.queue[self.front]
+            self.front = (self.front + 1) % self.size
+        return True
+
+    def get_front(self) -> int:
+        if not self.is_empty():
+            return self.queue[self.front]
+        return -1
 
     def get_rear(self):
-        if self.is_empty()==1:
-            return int(-1)
-        else:    
+        if not self.is_empty():
             return self.queue[self.rear]
+        return -1
 
     def is_empty(self):
-        if (self.front==-1 and self.rear==-1):
-            return 1
-        elif (self.front+1==self.rear) and self.rear==self.size-1:
-            self.front=-1
-            self.rear=-1
-            return 1
-        else :
-            return 0
+        return self.front == -1
 
-    
-            
-            
-    def enqueue(self, value: int) -> bool:
-        if self.is_full()==0:
-            
-            if self.front==self.rear==-1:
-                self.front=0
-                self.rear=0
-                self.queue[self.rear]=int 
-            
-            if self.rear<self.size-1 and self.front<self.rear:
-                self.rear+=1
-                self.queue[self.rear]=int
-            
-            if self.rear==self.size-1 and  self.queue[self.front-1]==[0]:
-                self.rear=0
-                self.queue[self.rear]=int
-            
-            if self.rear<self.front and self.queue[self.front-1]==[0]:
-                self.rear+=1
-                self.queue[self.rear]=int
-                
-        else:
-            return 0
-            
-    def dequeue(self) -> bool:
-        if self.is_empty()==0:
-            return 0
-        else:
-            if self.front<self.rear:
-                self.queue[self.front]=0
-                self.front=-1
-            
-            if self.front>self.rear:
-                self.queue[self.front]=0
-                self.front=-1
+    def is_full(self):
+        return (self.front == 0 and self.rear == (self.size - 1)) or (self.front == (self.rear + 1) % self.size)
 
 
-# Do not change the following code
+# Do not change the following codeT
 operations = []
 for specific_operation in input().split(','):
     operations.append(specific_operation.strip())
@@ -113,6 +70,8 @@ for i in range(len(operations)):
         result.append(obj.is_empty())
 
 print(result)
-
-
-
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Pri
