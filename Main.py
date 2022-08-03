@@ -3,7 +3,7 @@ class MyCircularQueue:
         self.queue = [0]*size
         self.size = size
         self.rear = -1
-        self.front = -
+        self.front = -1
         
         
     def get_front(self):
